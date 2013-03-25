@@ -1,0 +1,8 @@
+-vytvorit db na wamp serveri
+
+- vsetky subory sqlexplorer_plugin skopcit do adresara eclipse - na prislusne miesta
+
+- otvorit eclipse 
+
+- windows - preferences - dalej podla navodu:
+http://eclipsesql.sourceforge.net/drivers.php
