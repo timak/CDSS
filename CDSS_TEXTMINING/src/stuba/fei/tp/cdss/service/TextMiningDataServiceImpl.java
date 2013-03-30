@@ -1,10 +1,10 @@
 package stuba.fei.tp.cdss.service;
 
 import java.util.ArrayList;
-import java.util.List;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 
-import stuba.fei.tp.cdss.dto.RecordsTemplate;
 import stuba.fei.tp.cdss.dto.Symptom;
+import stuba.fei.tp.cdss.utils.XMLFileHelper;
 
 public class TextMiningDataServiceImpl implements TextMiningDataService {
 
@@ -25,14 +25,13 @@ public class TextMiningDataServiceImpl implements TextMiningDataService {
 
 	@Override
 	public String getMedicalRecords(String[] requiredSymptoms) {
-		//test
-		System.out.println("Hello");
-		System.out.println("Syms: " + requiredSymptoms.toString());
-		String requiredSyms = "";
-		for (String symptom : requiredSymptoms) {
-			requiredSyms += symptom + " "; 
-		}
-		return "Base64 encoded xml with requested medical records for symptoms: " + requiredSyms;
+		String recordsXML = XMLFileHelper.convertXMLFileToString("/records.xml");
+		
+		// encode xml with base 64 algorithm
+		String encodedXml = Base64.encode(recordsXML.getBytes());
+		System.out.println("Debug: Encoded xml - " + encodedXml);
+		
+		return encodedXml;
 	}
 
 }

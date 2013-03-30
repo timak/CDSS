@@ -1,0 +1,152 @@
+<records>
+  <patient>
+    <symptom name="preg">5</symptom>
+    <symptom name="plas">115</symptom>
+    <symptom name="pres">76</symptom>
+    <symptom name="skin">0</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">31.2000</symptom>
+    <symptom name="pedi">0.3430</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">3</symptom>
+    <symptom name="plas">120</symptom>
+    <symptom name="pres">60</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">1</symptom>
+    <symptom name="mass">28.9000</symptom>
+    <symptom name="pedi">0.7620</symptom>
+    <diagnosis>negative</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">2</symptom>
+    <symptom name="plas">221</symptom>
+    <symptom name="pres">89</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">33.5500</symptom>
+    <symptom name="pedi">0.1230</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient>    
+  <patient>
+    <symptom name="preg">5</symptom>
+    <symptom name="plas">115</symptom>
+    <symptom name="pres">76</symptom>
+    <symptom name="skin">0</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">31.2000</symptom>
+    <symptom name="pedi">0.3430</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">3</symptom>
+    <symptom name="plas">120</symptom>
+    <symptom name="pres">60</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">1</symptom>
+    <symptom name="mass">28.9000</symptom>
+    <symptom name="pedi">0.7620</symptom>
+    <diagnosis>negative</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">2</symptom>
+    <symptom name="plas">221</symptom>
+    <symptom name="pres">89</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">33.5500</symptom>
+    <symptom name="pedi">0.1230</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient> 
+  <patient>
+    <symptom name="preg">5</symptom>
+    <symptom name="plas">115</symptom>
+    <symptom name="pres">76</symptom>
+    <symptom name="skin">0</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">31.2000</symptom>
+    <symptom name="pedi">0.3430</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">3</symptom>
+    <symptom name="plas">120</symptom>
+    <symptom name="pres">60</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">1</symptom>
+    <symptom name="mass">28.9000</symptom>
+    <symptom name="pedi">0.7620</symptom>
+    <diagnosis>negative</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">2</symptom>
+    <symptom name="plas">221</symptom>
+    <symptom name="pres">89</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">33.5500</symptom>
+    <symptom name="pedi">0.1230</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient> 
+  <patient>
+    <symptom name="preg">5</symptom>
+    <symptom name="plas">115</symptom>
+    <symptom name="pres">76</symptom>
+    <symptom name="skin">0</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">31.2000</symptom>
+    <symptom name="pedi">0.3430</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">3</symptom>
+    <symptom name="plas">120</symptom>
+    <symptom name="pres">60</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">1</symptom>
+    <symptom name="mass">28.9000</symptom>
+    <symptom name="pedi">0.7620</symptom>
+    <diagnosis>negative</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">2</symptom>
+    <symptom name="plas">221</symptom>
+    <symptom name="pres">89</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">33.5500</symptom>
+    <symptom name="pedi">0.1230</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient> 
+  <patient>
+    <symptom name="preg">5</symptom>
+    <symptom name="plas">115</symptom>
+    <symptom name="pres">76</symptom>
+    <symptom name="skin">0</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">31.2000</symptom>
+    <symptom name="pedi">0.3430</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">3</symptom>
+    <symptom name="plas">120</symptom>
+    <symptom name="pres">60</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">1</symptom>
+    <symptom name="mass">28.9000</symptom>
+    <symptom name="pedi">0.7620</symptom>
+    <diagnosis>negative</diagnosis>
+  </patient>
+  <patient>
+    <symptom name="preg">2</symptom>
+    <symptom name="plas">221</symptom>
+    <symptom name="pres">89</symptom>
+    <symptom name="skin">1</symptom>
+    <symptom name="insu">0</symptom>
+    <symptom name="mass">33.5500</symptom>
+    <symptom name="pedi">0.1230</symptom>
+    <diagnosis>positive</diagnosis>
+  </patient> 
+</records>
