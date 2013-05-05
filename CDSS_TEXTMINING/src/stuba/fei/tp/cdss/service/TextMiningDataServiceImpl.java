@@ -9,7 +9,7 @@ import stuba.fei.tp.cdss.utils.XMLFileHelper;
 public class TextMiningDataServiceImpl implements TextMiningDataService {
 
 	@Override
-	public ArrayList<Symptom> getAvailableSymtpoms() {
+	public ArrayList<Symptom> getAvailableSymtpoms(String disease) {
 		//test
 		ArrayList<Symptom> symptoms = new ArrayList<Symptom>();
 		Symptom a = new Symptom("symptom A");
@@ -24,9 +24,9 @@ public class TextMiningDataServiceImpl implements TextMiningDataService {
 	}
 
 	@Override
-	public String getMedicalRecords(String[] requiredSymptoms) {
+	public String getMedicalRecords(String disease, String[] requiredSymptoms) { 
 		String recordsXML = XMLFileHelper.convertXMLFileToString("/records.xml");
-		
+
 		// encode xml with base 64 algorithm
 		String encodedXml = Base64.encode(recordsXML.getBytes());
 		System.out.println("Debug: Encoded xml - " + encodedXml);

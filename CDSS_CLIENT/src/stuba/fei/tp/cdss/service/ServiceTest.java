@@ -15,12 +15,12 @@ public class ServiceTest {
 
 	public static void main(String[] args) throws Exception {
 		// test call 1
-		ServiceCallHandler.getAvailableSymptoms();
+		ServiceCallHandler.getAvailableSymptoms("diabetes");
 		
 		
 		// test call 2
 		// get response
-		String endocedData = ServiceCallHandler.getMedicalRecords(new String[] {"sym1", "sym2", "sym3"});
+		String endocedData = ServiceCallHandler.getMedicalRecords("diabetes", new String[] {"sym1", "sym2", "sym3"});
 		
 		// decode data
 		byte[] decodedByteData = Base64.decode(endocedData);

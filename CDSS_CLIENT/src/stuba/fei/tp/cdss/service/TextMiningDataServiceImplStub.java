@@ -718,6 +718,48 @@
 
             
 
+                        /**
+                        * field for Disease
+                        */
+
+                        
+                                    protected java.lang.String localDisease ;
+                                
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localDiseaseTracker = false ;
+
+                           public boolean isDiseaseSpecified(){
+                               return localDiseaseTracker;
+                           }
+
+                           
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getDisease(){
+                               return localDisease;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Disease
+                               */
+                               public void setDisease(java.lang.String param){
+                            localDiseaseTracker = true;
+                                   
+                                            this.localDisease=param;
+                                    
+
+                               }
+                            
+
      
      
         /**
@@ -776,7 +818,25 @@
 
                
                    }
-               
+                if (localDiseaseTracker){
+                                    namespace = "http://service.cdss.tp.fei.stuba";
+                                    writeStartElement(null, namespace, "disease", xmlWriter);
+                             
+
+                                          if (localDisease==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localDisease);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             }
                     xmlWriter.writeEndElement();
                
 
@@ -961,7 +1021,13 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                
+                 if (localDiseaseTracker){
+                                      elementList.add(new javax.xml.namespace.QName("http://service.cdss.tp.fei.stuba",
+                                                                      "disease"));
+                                 
+                                         elementList.add(localDisease==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDisease));
+                                    }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -1036,7 +1102,35 @@
                 
                     
                     reader.next();
-                  
+                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://service.cdss.tp.fei.stuba","disease").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setDisease(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                    else {
+                                        
+                                    }
+                                  
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             
@@ -2084,6 +2178,48 @@
             
 
                         /**
+                        * field for Disease
+                        */
+
+                        
+                                    protected java.lang.String localDisease ;
+                                
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localDiseaseTracker = false ;
+
+                           public boolean isDiseaseSpecified(){
+                               return localDiseaseTracker;
+                           }
+
+                           
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getDisease(){
+                               return localDisease;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Disease
+                               */
+                               public void setDisease(java.lang.String param){
+                            localDiseaseTracker = true;
+                                   
+                                            this.localDisease=param;
+                                    
+
+                               }
+                            
+
+                        /**
                         * field for RequiredSymptoms
                         * This was an Array!
                         */
@@ -2221,7 +2357,25 @@
 
                
                    }
-                if (localRequiredSymptomsTracker){
+                if (localDiseaseTracker){
+                                    namespace = "http://service.cdss.tp.fei.stuba";
+                                    writeStartElement(null, namespace, "disease", xmlWriter);
+                             
+
+                                          if (localDisease==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localDisease);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             } if (localRequiredSymptomsTracker){
                              if (localRequiredSymptoms!=null) {
                                    namespace = "http://service.cdss.tp.fei.stuba";
                                    for (int i = 0;i < localRequiredSymptoms.length;i++){
@@ -2443,7 +2597,13 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                 if (localRequiredSymptomsTracker){
+                 if (localDiseaseTracker){
+                                      elementList.add(new javax.xml.namespace.QName("http://service.cdss.tp.fei.stuba",
+                                                                      "disease"));
+                                 
+                                         elementList.add(localDisease==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDisease));
+                                    } if (localRequiredSymptomsTracker){
                             if (localRequiredSymptoms!=null){
                                   for (int i = 0;i < localRequiredSymptoms.length;i++){
                                       
@@ -2546,8 +2706,36 @@
                     
                     reader.next();
                 
-                        java.util.ArrayList list1 = new java.util.ArrayList();
+                        java.util.ArrayList list2 = new java.util.ArrayList();
                     
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://service.cdss.tp.fei.stuba","disease").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setDisease(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                    else {
+                                        
+                                    }
+                                
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
@@ -2559,15 +2747,15 @@
                                     
                                               nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                               if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                                  list1.add(null);
+                                                  list2.add(null);
                                                        
                                                   reader.next();
                                               } else {
-                                            list1.add(reader.getElementText());
+                                            list2.add(reader.getElementText());
                                             }
                                             //loop until we find a start element that is not part of this array
-                                            boolean loopDone1 = false;
-                                            while(!loopDone1){
+                                            boolean loopDone2 = false;
+                                            while(!loopDone2){
                                                 // Ensure we are at the EndElement
                                                 while (!reader.isEndElement()){
                                                     reader.next();
@@ -2579,27 +2767,27 @@
                                                     reader.next();
                                                 if (reader.isEndElement()){
                                                     //two continuous end elements means we are exiting the xml structure
-                                                    loopDone1 = true;
+                                                    loopDone2 = true;
                                                 } else {
                                                     if (new javax.xml.namespace.QName("http://service.cdss.tp.fei.stuba","requiredSymptoms").equals(reader.getName())){
                                                          
                                                           nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                                           if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                                              list1.add(null);
+                                                              list2.add(null);
                                                                    
                                                               reader.next();
                                                           } else {
-                                                        list1.add(reader.getElementText());
+                                                        list2.add(reader.getElementText());
                                                         }
                                                     }else{
-                                                        loopDone1 = true;
+                                                        loopDone2 = true;
                                                     }
                                                 }
                                             }
                                             // call the converter utility  to convert and set the array
                                             
                                                     object.setRequiredSymptoms((java.lang.String[])
-                                                        list1.toArray(new java.lang.String[list1.size()]));
+                                                        list2.toArray(new java.lang.String[list2.size()]));
                                                 
                               }  // End of if for expected property start element
                                 

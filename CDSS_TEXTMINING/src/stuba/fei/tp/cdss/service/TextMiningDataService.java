@@ -8,7 +8,7 @@ import stuba.fei.tp.cdss.dto.Symptom;
 
 public interface TextMiningDataService {
 
-	public ArrayList<Symptom> getAvailableSymtpoms();
+	public ArrayList<Symptom> getAvailableSymtpoms(String disease);
 	
-	public String getMedicalRecords(String[] requiredSymptoms);
+	public String getMedicalRecords(String disease, String[] requiredSymptoms);
 }

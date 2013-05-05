@@ -10,9 +10,10 @@ import stuba.fei.tp.cdss.service.TextMiningDataServiceImplStub.Symptom;
 
 public class ServiceCallHandler {
 	
-	public static Symptom[] getAvailableSymptoms() throws RemoteException {
+	public static Symptom[] getAvailableSymptoms(String disease) throws RemoteException {
 		TextMiningDataServiceImplStub stub = new TextMiningDataServiceImplStub();
 		GetAvailableSymtpoms request = new GetAvailableSymtpoms();
+		request.setDisease(disease);
 		GetAvailableSymtpomsResponse response = stub.getAvailableSymtpoms(request);
 		Symptom[] symptoms = response.get_return();
 		System.out.println("Response: ");
@@ -23,10 +24,11 @@ public class ServiceCallHandler {
 		return symptoms;
 	}
 	
-	public static String getMedicalRecords(String[] symptoms) throws RemoteException {
+	public static String getMedicalRecords(String disease, String[] symptoms) throws RemoteException {
 		TextMiningDataServiceImplStub stub = new TextMiningDataServiceImplStub();
 		GetMedicalRecords request = new GetMedicalRecords();
 		
+		request.setDisease(disease);
 		request.setRequiredSymptoms(symptoms);
 		
 		GetMedicalRecordsResponse response = stub.getMedicalRecords(request);
