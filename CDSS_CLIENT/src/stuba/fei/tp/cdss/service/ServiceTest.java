@@ -20,11 +20,12 @@ public class ServiceTest {
 		
 		// test call 2
 		// get response
-		String endocedData = ServiceCallHandler.getMedicalRecords("diabetes", new String[] {"sym1", "sym2", "sym3"});
+		String endocedData = ServiceCallHandler.getMedicalRecords("diabetes", new String[] {"mass", "age", "skin"});
 		
 		// decode data
 		byte[] decodedByteData = Base64.decode(endocedData);
 		String decodedXml = new String(decodedByteData);
+		System.out.println(decodedXml);
 		
 		// parse xml
 		RecordsParser parser = new RecordsParser();
