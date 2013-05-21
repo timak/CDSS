@@ -106,6 +106,7 @@ public class WekaManager {
 
 		try {
 			inst = OpenDatabase();
+			inst = odstran_neuzitocne(inst);
 			inst = diskretizuj(inst);
 			inst.setClassIndex(inst.numAttributes() - 1);
 			nastav_klasifikatory(inst);
