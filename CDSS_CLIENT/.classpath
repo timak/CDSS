@@ -8,9 +8,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Szandra/Downloads/mysql-connector-java-5.1.18-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Weka-3-7/weka-src.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Weka-3-7/weka.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

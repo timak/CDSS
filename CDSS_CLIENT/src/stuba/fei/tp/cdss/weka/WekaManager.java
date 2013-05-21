@@ -19,6 +19,7 @@ import weka.core.Instances;
 import weka.experiment.InstanceQuery;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Discretize;
+import weka.filters.unsupervised.attribute.RemoveUseless;
 
 public class WekaManager {
 
@@ -29,7 +30,9 @@ public class WekaManager {
 
 		try {
 			Instances inst = OpenDatabase();
+			inst =  odstran_neuzitocne(inst);
 			inst = diskretizuj(inst);
+			
 
 			inst.setClassIndex(inst.numAttributes() - 1);
 			nastav_klasifikatory(inst, dt, lmt, jrip);
@@ -115,7 +118,27 @@ public class WekaManager {
 		return inst;
 
 	}
+	
+	public static Instances odstran_neuzitocne(Instances inst) throws Exception{
+		
+		//vymazanie neuzitocnych atribútov
+        
+		RemoveUseless removeUseless= new RemoveUseless();
+        removeUseless.setInputFormat(inst);
+        inst=Filter.useFilter(inst, removeUseless);
+    
 
+        //vymazanie instancii, ktore obsahuju chybajuce udaje      
+
+        for(int atributy = 0; atributy< inst.numAttributes();atributy++){
+        	inst.deleteWithMissing(atributy);
+        }    
+       
+		
+		return inst;
+	}
+
+	
 	public static String getpresnost(Classifier clasif, Instances instances)
 			throws Exception {
 
@@ -217,6 +240,8 @@ public class WekaManager {
 
 		lmt.buildClassifier(i);
 		System.out.println(lmt);
+		
+		
 		tmp = getpresnost(dt, i);
 		double avgLmt = Double.parseDouble(tmp.split(",")[0]);
 		double avgLmtInc = Double.parseDouble(tmp.split(",")[1]);
@@ -224,8 +249,10 @@ public class WekaManager {
 
 		// JRip - rozhodovacie pravidlo
 
-		jrip.buildClassifier(i);
+		jrip.buildClassifier(i);		
 		System.out.println(jrip);
+		
+		
 		tmp = getpresnost(jrip, i);
 		double avgJrip = Double.parseDouble(tmp.split(",")[0]);
 		double avgJripInc = Double.parseDouble(tmp.split(",")[1]);

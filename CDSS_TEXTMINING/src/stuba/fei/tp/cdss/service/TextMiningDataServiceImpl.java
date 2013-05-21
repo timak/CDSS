@@ -25,6 +25,7 @@ public class TextMiningDataServiceImpl implements TextMiningDataService {
 
 	@Override
 	public String getMedicalRecords(String disease, String[] requiredSymptoms) { 
+		
 		String recordsXML = XMLFileHelper.convertXMLFileToString("/records.xml");
 
 		// encode xml with base 64 algorithm
