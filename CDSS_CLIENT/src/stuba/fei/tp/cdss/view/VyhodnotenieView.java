@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
+import stuba.fei.tp.cdss.weka.WekaManager;
+
 public class VyhodnotenieView extends JFrame {
 	private static final long serialVersionUID = 3707521517187163206L;
 
@@ -32,12 +34,14 @@ public class VyhodnotenieView extends JFrame {
 	private JPanel bottomPanel;
 	private JButton okButton;
 	
-	private double jrip;
-	private double dt;
-	private double lmt;
-	//TODO: diagnoza + percentualna hodnota
+	private String jrip;
+	private String dt;
+	private String lmt;
+	private double jripAccuracy;
+	private double dtAccuracy;
+	private double lmtAccuracy;
 
-	public VyhodnotenieView(double jrip, double dt, double lmt) {
+	public VyhodnotenieView(String jrip, String dt, String lmt) {
 		this.jrip = jrip;
 		this.dt = dt;
 		this.lmt = lmt;
@@ -82,32 +86,37 @@ public class VyhodnotenieView extends JFrame {
 		centerPanel = new JPanel(new GridLayout(0, 2));
 
 		//jrip
-		centerPanel.add(createPercentageBarPanel((int) Math.round(jrip*100.0)));
 		centerPanel.add(createDiagnoseLabelPanel("Jrip"));
+		centerPanel.add(createPercentageBarPanel(jrip, WekaManager.getJripAccuracy()));
 			
 		//dt
-		centerPanel.add(createPercentageBarPanel((int) Math.round(dt*100.0)));
 		centerPanel.add(createDiagnoseLabelPanel("Decision Table"));
+		centerPanel.add(createPercentageBarPanel(dt, WekaManager.getDtAccuracy()));
 			
 		//lmt
-		centerPanel.add(createPercentageBarPanel((int) Math.round(lmt*100.0)));
 		centerPanel.add(createDiagnoseLabelPanel("LMT"));
+		centerPanel.add(createPercentageBarPanel(lmt, WekaManager.getLmtAccuracy()));
 		
 		return centerPanel;
 	}
 
-	private JPanel createPercentageBarPanel(int value) {
-		JPanel percentageBarPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+	private JPanel createPercentageBarPanel(String value, double accuracy) {
+		JPanel percentageBarPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
 		JProgressBar percentageBar = new JProgressBar();
-		percentageBar.setValue(value);
+		percentageBar.setValue((int) accuracy);
 		percentageBar.setStringPainted(true);
+		
+		JLabel percentageLabel = new JLabel(value);
+		percentageLabel.setSize(200, percentageLabel.getHeight());
+		
 		percentageBarPanel.add(percentageBar);
+		percentageBarPanel.add(percentageLabel);
 		
 		return percentageBarPanel;
 	}
 
 	private JPanel createDiagnoseLabelPanel(String name) {
-		JPanel diagnoseLabelPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+		JPanel diagnoseLabelPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 100, 10));
 		JLabel diagnoseLabel = new JLabel(name);
 		diagnoseLabel.setSize(200, diagnoseLabel.getHeight());
 		diagnoseLabelPanel.add(diagnoseLabel);

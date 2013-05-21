@@ -39,7 +39,6 @@ public class PriznakyView extends JFrame {
 	public static final String BUTTON_NEXT = "Next";
 	public static final String OK_BUTTON = "OK";
 
-	// private JFrame progressBarFrame;
 	private JProgressBar progressBarInPanel;
 	private JPanel mainPanel;
 	private JPanel topPanel;
@@ -54,9 +53,9 @@ public class PriznakyView extends JFrame {
 	private Instance patientData;
 	private String symptomValues[][] = {};
 	
-	private double jrip;
-	private double dt;
-	private double lmt;
+	private String jrip;
+	private String dt;
+	private String lmt;
 
 	public PriznakyView(String disease) {
 		this.disease = disease;
@@ -69,13 +68,11 @@ public class PriznakyView extends JFrame {
 	private void initialize() {
 		setTitle("Priznaky");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setSize(500, 400);
 		setContentPane(createContent());
 		setResizable(false);
 		pack();
 		setVisible(true);
 		setLocationRelativeTo(null);
-		// createProgressBarFrame();
 	}
 
 	private JPanel createContent() {

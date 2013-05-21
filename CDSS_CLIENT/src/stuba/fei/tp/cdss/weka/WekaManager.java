@@ -26,6 +26,10 @@ public class WekaManager {
 	private static DecisionTable dt;
 	private static JRip jrip;
 	private static LMT lmt;	
+	
+	private static double jripAccuracy;
+	private static double dtAccuracy;
+	private static double lmtAccuracy;
 
 	/*public static void klasifikujData() {
 		DecisionTable dt = new DecisionTable();
@@ -138,33 +142,36 @@ public class WekaManager {
 		return i;
 	}
 	
-	public static double clasifyByJrip(Instance instance) {
+	public static String clasifyByJrip(Instance instance) {
 		double number = 0.0;
 		try {
 			number = jrip.classifyInstance(instance);
+			
 		} catch (Exception e) {
 			System.out.println("Error in clasifyByJrip");
 			e.printStackTrace();
 		}
 		System.out.println("Klasifikacia podla jrip: " + number);
 		
-		return number;
+		return instance.classAttribute().value((int) number);
 	}
 	
-	public static double clasifyByDt(Instance instance) {
+	public static String clasifyByDt(Instance instance) {
 		double number = 0.0;
 		try {
 			number = dt.classifyInstance(instance);
+			
+			
 		} catch (Exception e) {
 			System.out.println("Error in clasifyByDt");
 			e.printStackTrace();
 		}
 		System.out.println("Klasifikacia podla dt: " + number);
 		
-		return number;
+		return instance.classAttribute().value((int) number);
 	}
 	
-	public static double clasifyByLmt(Instance instance) {
+	public static String clasifyByLmt(Instance instance) {
 		double number = 0.0;
 		try {
 			number = lmt.classifyInstance(instance);
@@ -175,7 +182,7 @@ public class WekaManager {
 		}
 		System.out.println("Klasifikacia podla lmt: " + number);
 		
-		return number;
+		return instance.classAttribute().value((int) number);
 	}
 
 	/*public static void Decision(Instance i, DecisionTable dt, LMT lmt, JRip jrip) throws Exception {
@@ -386,5 +393,21 @@ public class WekaManager {
 
 		}
 
+		//assign accuracies to variables
+		dtAccuracy = Double.parseDouble(pr[0][1]);
+		lmtAccuracy = Double.parseDouble(pr[1][1]);
+		jripAccuracy = Double.parseDouble(pr[2][1]);
+	}
+
+	public static double getJripAccuracy() {
+		return jripAccuracy;
+	}
+
+	public static double getDtAccuracy() {
+		return dtAccuracy;
+	}
+
+	public static double getLmtAccuracy() {
+		return lmtAccuracy;
 	}
 }

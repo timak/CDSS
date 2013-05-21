@@ -28,17 +28,12 @@ public class TextMiningDataServiceImpl implements TextMiningDataService {
 	@Override
 	public String getMedicalRecords(String disease, String[] requiredSymptoms) { 
 
-		String recordsXML = XMLFileHelper.convertXMLFileToString("/records.xml");
-
-
 		XMLSymptomFilter xmlSymptomFilter = new XMLSymptomFilter(requiredSymptoms);
 		InputStream fileInputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("/diabetes.xml");
         xmlSymptomFilter.load(fileInputStream);
 
-        recordsXML = xmlSymptomFilter.getXML();
+        String recordsXML = xmlSymptomFilter.getXML();
         System.out.println("Debug: Records - " + recordsXML);
-
-
 
         // encode xml with base 64 algorithm
         String encodedXml = Base64.encode(recordsXML.getBytes());
