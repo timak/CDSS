@@ -207,8 +207,8 @@ public class WekaManager {
 				pom = i + 1;
 				opt[0] = pom + "";
 				diskretizacia.setOptions(opt);
-				diskretizacia.setBins((int) (cislo / 1.25));
-
+				//diskretizacia.setBins((int) (cislo / 5));
+				diskretizacia.setBins(10);
 				diskretizacia.setInputFormat(inst);
 				inst = Filter.useFilter(inst, diskretizacia);
 
@@ -340,7 +340,7 @@ public class WekaManager {
 		System.out.println(lmt);
 		
 		
-		tmp = getpresnost(dt, i);
+		tmp = getpresnost(lmt, i);
 		double avgLmt = Double.parseDouble(tmp.split(",")[0]);
 		double avgLmtInc = Double.parseDouble(tmp.split(",")[1]);
 		System.out.println(avgLmt + "/" + avgLmtInc);

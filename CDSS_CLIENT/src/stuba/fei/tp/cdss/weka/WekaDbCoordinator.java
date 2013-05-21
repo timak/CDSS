@@ -78,7 +78,7 @@ public class WekaDbCoordinator {
 		sb.append("CREATE TABLE " + DB_TABLE_NAME + " ");
 		sb.append("(id INTEGER not NULL AUTO_INCREMENT, ");
 		for (Entry<String, String> entry : pZero.getSymptoms().entrySet()) {
-			sb.append(" " + entry.getKey() + " VARCHAR(255), ");
+			sb.append(" " + entry.getKey() + " DECIMAL(11,2), ");
 		}
 		sb.append(" diagnosis VARCHAR(255), ");
 		sb.append(" PRIMARY KEY ( id ))");
