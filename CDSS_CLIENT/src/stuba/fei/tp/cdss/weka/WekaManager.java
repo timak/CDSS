@@ -92,7 +92,7 @@ public class WekaManager {
 		query.setDatabaseURL(dbUrl);
 		query.setUsername(dbUser);
 		query.setPassword(dbPwd);
-		query.setQuery("select * from diabetes_tmp");
+		query.setQuery("select * from diabetes");
 
 		Instances data = query.retrieveInstances();
 
@@ -168,6 +168,7 @@ public class WekaManager {
 		double number = 0.0;
 		try {
 			number = lmt.classifyInstance(instance);
+			
 		} catch (Exception e) {
 			System.out.println("Error in clasifyByLmt");
 			e.printStackTrace();
