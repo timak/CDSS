@@ -37,6 +37,7 @@ public class WekaManager {
 			inst.setClassIndex(inst.numAttributes() - 1);
 			nastav_klasifikatory(inst, dt, lmt, jrip);
 			Instance pacient = NovyPacient(inst);
+			System.out.println("Rozhodovanie:");
 			Decision(pacient, dt, lmt, jrip);
 			
 		} catch (Exception e) {
@@ -84,7 +85,7 @@ public class WekaManager {
 		query.setDatabaseURL(dbUrl);
 		query.setUsername(dbUser);
 		query.setPassword(dbPwd);
-		query.setQuery("select * from diabetes");
+		query.setQuery("select * from diabetes_tmp");
 
 		Instances data = query.retrieveInstances();
 

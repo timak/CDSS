@@ -20,7 +20,7 @@ public class ServiceTest {
 		
 		// test call 2
 		// get response
-		String endocedData = ServiceCallHandler.getMedicalRecords("diabetes", new String[] {"mass", "age", "skin"});
+		String endocedData = ServiceCallHandler.getMedicalRecords("diabetes", new String[] {"mass", "age","preg", "skin"});
 		
 		// decode data
 		byte[] decodedByteData = Base64.decode(endocedData);
