@@ -3,16 +3,16 @@ package stuba.fei.tp.cdss.weka;
 import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Random;
-import java.util.Enumeration;
 
 import weka.classifiers.Classifier;
-import weka.core.Attribute;
 import weka.classifiers.Evaluation;
 import weka.classifiers.rules.DecisionTable;
 import weka.classifiers.rules.JRip;
 import weka.classifiers.trees.LMT;
+import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -22,8 +22,12 @@ import weka.filters.unsupervised.attribute.Discretize;
 import weka.filters.unsupervised.attribute.RemoveUseless;
 
 public class WekaManager {
+	
+	private static DecisionTable dt;
+	private static JRip jrip;
+	private static LMT lmt;	
 
-	public static void klasifikujData() {
+	/*public static void klasifikujData() {
 		DecisionTable dt = new DecisionTable();
 		JRip jrip = new JRip();
 		LMT lmt = new LMT();
@@ -38,38 +42,41 @@ public class WekaManager {
 			nastav_klasifikatory(inst, dt, lmt, jrip);
 			Instance pacient = NovyPacient(inst);
 			Decision(pacient, dt, lmt, jrip);
-			
+
 		} catch (Exception e) {
 			System.out.println("Unable to clasificate data: " + e.toString());
 		}
-	}
+	}*/
 	
-	public static Instance NovyPacient(Instances inst) {
-		String[][] hodnoty = mozne_hodnoty_atr(inst);
+	/*public static void clasifyData(Instance patient) {
+	DecisionTable dt = new DecisionTable();
+	JRip jrip = new JRip();
+	LMT lmt = new LMT();
 
+	try {
+		Decision(patient, dt, lmt, jrip);
+	} catch (Exception e) {
+		System.out.println("Unable to clasificate data: " + e.toString());
+	}
+	}*/
+	
+	
+	/*public static Instance NovyPacient(Instances inst) {
+		String[][] hodnoty = mozne_hodnoty_atr(inst);
+	
 		// novy pacient
 		Instance i = new DenseInstance(inst.numAttributes());
 		i.setDataset(inst);
-
+	
 		for (int j = 0; j <= inst.numAttributes() - 1; j++) {
 			i.setValue(j, hodnoty[j][0]);
-
+	
 		}
-		
+	
 		return i;
 	
-	}
+	}*/
 	
-	public static void Decision(Instance i, DecisionTable dt, LMT lmt, JRip jrip) throws Exception{
-		
-		System.out.println("Klasifikacia podla jrip: "
-				+ jrip.classifyInstance(i));
-		System.out.println("Klasifikacia podla dt: "
-				+ dt.classifyInstance(i));
-		System.out.println("Klasifikacia podla lmt: "
-				+ lmt.classifyInstance(i));
-	}
-
 	public static Instances OpenDatabase() throws Exception {
 
 		Properties prop = new Properties();
@@ -90,6 +97,89 @@ public class WekaManager {
 
 		return data;
 	}
+
+	public static Instances createNewInstance() {
+		dt = new DecisionTable();
+		jrip = new JRip();
+		lmt = new LMT();
+		Instances inst = null;
+
+		try {
+			inst = OpenDatabase();
+			inst = diskretizuj(inst);
+			inst.setClassIndex(inst.numAttributes() - 1);
+			nastav_klasifikatory(inst);
+		} catch(Exception e) {
+			System.out.println("Error in createNewInstance");
+			e.printStackTrace();
+		}
+		
+		return inst;
+	}
+	
+
+	public static String[][] getSymptomValues(Instances instances) {
+		String[][] symptomValues = mozne_hodnoty_atr(instances);	
+
+		return symptomValues;
+	}
+	
+	public static Instance createNewPatient(Instances instances, String[][] symptomsValues) {
+		// novy pacient
+		Instance i = new DenseInstance(instances.numAttributes());
+		i.setDataset(instances);
+
+		for (int j = 0; j <= instances.numAttributes() - 1; j++) {
+			i.setValue(j, symptomsValues[j][0]);
+		}
+
+		return i;
+	}
+	
+	public static double clasifyByJrip(Instance instance) {
+		double number = 0.0;
+		try {
+			number = jrip.classifyInstance(instance);
+		} catch (Exception e) {
+			System.out.println("Error in clasifyByJrip");
+			e.printStackTrace();
+		}
+		System.out.println("Klasifikacia podla jrip: " + number);
+		
+		return number;
+	}
+	
+	public static double clasifyByDt(Instance instance) {
+		double number = 0.0;
+		try {
+			number = dt.classifyInstance(instance);
+		} catch (Exception e) {
+			System.out.println("Error in clasifyByDt");
+			e.printStackTrace();
+		}
+		System.out.println("Klasifikacia podla dt: " + number);
+		
+		return number;
+	}
+	
+	public static double clasifyByLmt(Instance instance) {
+		double number = 0.0;
+		try {
+			number = lmt.classifyInstance(instance);
+		} catch (Exception e) {
+			System.out.println("Error in clasifyByLmt");
+			e.printStackTrace();
+		}
+		System.out.println("Klasifikacia podla lmt: " + number);
+		
+		return number;
+	}
+
+	/*public static void Decision(Instance i, DecisionTable dt, LMT lmt, JRip jrip) throws Exception {
+		System.out.println("Klasifikacia podla jrip: " + jrip.classifyInstance(i));
+		System.out.println("Klasifikacia podla dt: " + dt.classifyInstance(i));
+		System.out.println("Klasifikacia podla lmt: " + lmt.classifyInstance(i));
+	}*/
 
 	public static Instances diskretizuj(Instances inst) throws Exception {
 
@@ -199,7 +289,7 @@ public class WekaManager {
 
 	public static String[][] mozne_hodnoty_atr(Instances instances) {
 
-		String[][] mozne_hodn_atr = new String[instances.numAttributes()][150];
+		String[][] mozne_hodn_atr = new String[instances.numAttributes()][instances.numInstances()];
 		int h = 0;
 
 		for (int j = 0; j < instances.numAttributes(); j++) {
@@ -223,9 +313,7 @@ public class WekaManager {
 		return mozne_hodn_atr;
 	}
 
-	public static void nastav_klasifikatory(Instances i, DecisionTable dt,
-			LMT lmt, JRip jrip) throws Exception {
-
+	public static void nastav_klasifikatory(Instances i) throws Exception {
 		// decision table - rozhodovacia tabulka
 
 		dt.buildClassifier(i);
