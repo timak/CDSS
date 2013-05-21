@@ -18,7 +18,7 @@ public class WekaDbCoordinator {
 	
 	private Connection conn = null;
 	
-	public static final String DB_TABLE_NAME = "diabetes_tmp";  
+	public static final String DB_TABLE_NAME = "diabetes";  
 	
 	
 	public void createWekaData(ArrayList<Patient> recordsData) throws Exception {
