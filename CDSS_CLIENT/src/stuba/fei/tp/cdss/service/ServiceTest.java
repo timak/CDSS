@@ -11,6 +11,7 @@ import stuba.fei.tp.cdss.parser.RecordsParser;
 import stuba.fei.tp.cdss.view.MainView;
 import stuba.fei.tp.cdss.weka.WekaDbCoordinator;
 import stuba.fei.tp.cdss.weka.WekaManager;
+import weka.core.Instances;
 
 public class ServiceTest {
 
@@ -52,5 +53,7 @@ public class ServiceTest {
 			System.out.println("Unable to create temp table for weka: " + e.toString());
 			wekaCoor.closeConnection();
 		}*/
+		
+
 	}
 }

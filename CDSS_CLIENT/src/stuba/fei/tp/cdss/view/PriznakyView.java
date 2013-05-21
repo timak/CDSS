@@ -239,12 +239,18 @@ public class PriznakyView extends JFrame {
 	protected void getDiagnoses() throws Exception {
 
 		try {
+			
+		
+			
+			
 			patientData = WekaManager.createNewPatient(instances, symptomValues);
 			// classify data
 			jrip = WekaManager.clasifyByJrip(patientData);
 			dt = WekaManager.clasifyByDt(patientData);
 			lmt = WekaManager.clasifyByLmt(patientData);
+			
 
+			
 			// remove temp table
 			wekaCoor.dropTable();
 			wekaCoor.closeConnection();

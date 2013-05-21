@@ -1,6 +1,8 @@
 package stuba.fei.tp.cdss.weka;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -208,7 +210,7 @@ public class WekaManager {
 				opt[0] = pom + "";
 				diskretizacia.setOptions(opt);
 				//diskretizacia.setBins((int) (cislo / 5));
-				diskretizacia.setBins(10);
+				//diskretizacia.setBins(10);
 				diskretizacia.setInputFormat(inst);
 				inst = Filter.useFilter(inst, diskretizacia);
 
@@ -242,11 +244,11 @@ public class WekaManager {
 	public static String getpresnost(Classifier clasif, Instances instances)
 			throws Exception {
 
-		int runs = 3;
+		int runs = 1;
 
 		final int numInstance = instances.numInstances();
 
-		int folds = (int) Math.floor(instances.numInstances() / 3);
+		int folds = (int) Math.floor(instances.numInstances() / 50);
 
 		Random rand = new Random(1);
 
@@ -410,4 +412,6 @@ public class WekaManager {
 	public static double getLmtAccuracy() {
 		return lmtAccuracy;
 	}
+	
+
 }
