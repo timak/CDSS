@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- gate.xml: GATE configuration data -->
+<GATE>
+
+<!-- NOTE: the next element may be overwritten by the GUI!!! -->
+<GATECONFIG Known_plugin_path=""
+ Load_plugin_path=""
+ Look_and_Feel="javax.swing.plaf.metal.MetalLookAndFeel"
+ Main_frame_height="698"
+ Main_frame_maximized="false"
+ Main_frame_width="1365"
+ Menus_font="Dialog#12#false#true"
+ Other_components_font="Dialog#12#false#true"
+ Save_options_on_exit="true"
+ Save_session_on_exit="true"
+ Text_components_font="Dialog#12#false#false"
+ docedit_insert_append="true"
+ gate.gui.docview.AnnotationSetsView.colours="{Street=-2144542420, paragraph=-2144542420, TempPerson=-2130706598, Unknown=-2132726740, Organization=-2130748673, KrvnyTlak=-2130706598, Date=-2130748838, TempYear=-2141519873, TempTime=-2132726740, riadok=-2141562113, Percent=-2141519873, Identifier=-2141520038, Lieky=-2130748838, FirstPerson=-2130748838, TempOrganization=-2141520038, Money=-2141562113, Location=-2130706598, Token=-2141519873, SpaceToken=-2141562113, TempLocation=-2130748838, Title=-2144542420, Email=-2132680404, Split=-2130748673, Address=-2132680404, Sentence=-2130706598, Lookup=-2141520038, TempZone=-2130748673, JobTitle=-2141520038, TempDate=-2141562113, Person=-2132726740}"
+ gate.gui.docview.AnnotationSetsView.types="[.KrvnyTlak, .Lieky, .riadok]"
+ gate.swing.XJFileChooser="{lastapplication=/home/dusan/state.gap, application.ANNIE=/home/dusan/state.gap, gate.corpora.CorpusImpl=/home/dusan/data, applications=ANNIE;}"
+/>
+
+</GATE>
