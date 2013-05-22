@@ -1,0 +1,63 @@
+/*
+ * krvny_tlak.jape
+ * 
+ * Pomocou tohto subora sa oznacuje krvny tlak pacienta
+ * 
+**/
+
+Phase:	diabetes 
+Input:	Token SpaceToken
+Options: control = appelt
+
+Macro: CELE_CISLO
+// 123
+(
+	{Token.kind == number}
+)
+
+Macro: DESATINNE_CISLO
+// 23.456
+(
+	(CELE_CISLO)
+	({Token.kind == punctuation})
+	(CELE_CISLO)
+)
+
+Macro: DIAGNOZE
+// tested_negative
+(
+	({Token.kind == word})
+)
+
+/////////////////////////////////////////////
+
+Rule: diabetes
+Priority: 20
+//6,148,72,35,0,33.6,0.627,50,tested_positive
+//1,85,66,29,0,26.6,0.351,31,tested_negative
+
+(
+	(CELE_CISLO):cislo_1
+	({Token.string == ","})
+	(CELE_CISLO):cislo_2
+	({Token.string == ","})
+	(CELE_CISLO):cislo_3
+	({Token.string == ","})
+	(CELE_CISLO):cislo_4
+	({Token.string == ","})
+	(CELE_CISLO):cislo_5
+	({Token.string == ","})
+	(DESATINNE_CISLO):cislo_6
+	({Token.string == ","})
+	(DESATINNE_CISLO):cislo_7
+	({Token.string == ","})
+	(CELE_CISLO):cislo_8
+	({Token.string == ","})
+	({Token.kind == word})
+	({Token.string == "_"})
+	({Token.kind == word}):val_1
+)
+
+:diabetes
+-->
+:diabetes.riadok = {preg = :cislo_1@string, plas = :cislo_2@string, pres = :cislo_3@string, skin = :cislo_4@string, insu = :cislo_5@string, mass = :cislo_6@string, pedi = :cislo_7@string, age = :cislo_8@string, class = :val_1@string }
