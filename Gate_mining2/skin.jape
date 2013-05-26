@@ -1,0 +1,31 @@
+/*
+ * skin.jape
+ * 
+**/
+
+Phase:	skin 
+Input:	Token SpaceToken
+Options: control = appelt
+
+Macro: CELE_CISLO
+// 123
+(
+	{Token.kind == number}
+)
+
+/////////////////////////////////////////////
+
+Rule: diabetes
+Priority: 20
+//6,148,72,35,0,33.6,0.627,50,tested_positive
+//1,85,66,29,0,26.6,0.351,31,tested_negative
+
+(
+	(CELE_CISLO):cislo
+	({SpaceToken})?
+	({Token.string == "mm"})
+)
+
+:skin
+-->
+:skin.skin = { skin = :cislo@string }
